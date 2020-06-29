@@ -44,7 +44,8 @@ TreeCatalogControl.prototype._init = function () {
         },
         callback:{
             beforeDrop: function (treeId, treeNodes, targetNode, moveType, isCopy) {
-                if(moveType == "inner" || targetNode.name == "图层"){
+                if(moveType == "inner" || targetNode.name == "图层" ||
+                    (targetNode.name == "天地图影像" && moveType == "next")){
                     return false;
                 }
                 else {
