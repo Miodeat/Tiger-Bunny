@@ -18,7 +18,7 @@ MapControl.prototype._init = function () {
     me.div = $("<div>").appendTo("#" + me.options.div);
     me.div.css({
         "position": "relative",
-        "width": me.options.width + "px",
+        "width": me.options.width + "%",
         "height": me.options.height + "px",
         "float": "left"
     });
