@@ -1,0 +1,14 @@
+.ztree {
+
+}
+
+.tree-scroll-container {
+    float: left;
+    margin-right: 2px;
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 647px;
+    width: 160px;
+    overflow: auto;
+    background-color: #90a0b0;
+}

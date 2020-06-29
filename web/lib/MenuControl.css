@@ -1,6 +1,23 @@
+#menu {
+    width: 100%;
+    margin-left: 0px;
+    background-color: #90a0b0;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
 .menubar {
     width: 100%;
-    background-color: #7b98bc;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.first-menu-spacing{
+    margin-left: 40px;
+    margin-right: 5px;
+}
+
+.menu-spacing{
+    margin-left: 5px;
+    margin-right: 5px;
 }

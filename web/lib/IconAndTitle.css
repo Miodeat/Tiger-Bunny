@@ -1,0 +1,14 @@
+.icon {
+    width: 80px;
+    height: 60px;
+    float: left;
+    margin-left: 40px;
+}
+
+.title {
+    float: left;
+    margin-left: 20px;
+    font-family: "Georgia", serif;
+    font-style: italic;
+    text-align: center;
+}
