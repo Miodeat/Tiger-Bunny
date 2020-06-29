@@ -37,7 +37,7 @@ DesktopControl.prototype._init = function () {
 
     me.mapControl = new MapControl({
         "div": "display",
-        "width": 1370,
+        "width": 87,
         "height": 645
     });
 
