@@ -40,6 +40,7 @@ if(!$mkDirResult){
         "message" => "Cannot create new directory!",
     );
     echo json_encode($response);
+    return;
 }
 
 $GBKLyrName = iconv("utf-8", "GBK", $request->lyrName);
@@ -54,6 +55,7 @@ if(!$exportResult){
         "message" => "Fail to export table"
     );
     echo json_encode($response);
+    return;
 }
 
 $zip = new ZipArchive();
@@ -67,7 +69,10 @@ if($zipCode === TRUE){
     );
 }
 else{
-    echo $zipCode;
+    $response = array(
+        "success" => false,
+        "message" => "Fail to compress files." + (string)$zipCode
+    );
 }
 
 echo json_encode($response);

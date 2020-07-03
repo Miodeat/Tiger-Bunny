@@ -1,3 +1,4 @@
+// 
 TreeCatalogControl = function (ops) {
     let me = this;
     me.ops = $.extend({
