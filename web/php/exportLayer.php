@@ -38,25 +38,29 @@ $request = json_decode($_REQUEST["lyrInfo"]);
 $path = $request->path;
 $path = $path . "/" . $request->lyrName;
 
-$mkDirResult = @mkdir($path, 0777, true); // 新建文件夹
-// 判断新建文件夹是否成功
-if(!$mkDirResult){
-    $response = array(
-        "success" => false,
-        "message" => "Cannot create new directory!",
-    );
-    echo json_encode($response);
+if(!is_dir($path)) {
+    $mkDirResult = @mkdir($path, 0777, true); // 新建文件夹
+    // 判断新建文件夹是否成功
+    if (!$mkDirResult) {
+        $response = array(
+            "success" => false,
+            "message" => "Cannot create new directory!",
+        );
+        echo json_encode($response);
+        return;
+    }
+    chmod($path, 0777);
 }
 
 // 构建导出shp命令并执行
 $lyrName = $request->lyrName;
 $command = "pgsql2shp -f " . $path . "/". $lyrName . ".shp ".
     "-h 127.0.0.1 -u postgres -P 123456 -p 5432 webgis ".
-    "\"SELECT * from ". $lyrName . "\";";
-$exportResult = exec($command);
+    "\"SELECT * from ". $lyrName . "\"";
+exec($command, $output, $code);
 
 // 判断执行结果
-if(!$exportResult){
+if($code){
     $response = array(
         "success" => false,
         "message" => "Fail to export table"
