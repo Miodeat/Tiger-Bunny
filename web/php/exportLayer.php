@@ -22,16 +22,7 @@ function _addFileToZip($path, $zip){
 
 
 $dbOperator = new DBOperator();
-$dbOperator->connect();
 
-if(!$dbOperator->getConnection()){
-    $response = array(
-        "success" => false,
-        "message" => "Cannot connect to db server!"
-    );
-    echo json_encode($response);
-    return;
-}
 $request = json_decode($_REQUEST["lyrInfo"]);
 
 // 以图层英文名创建文件夹以存放导出的shp文件
@@ -54,8 +45,10 @@ if(!is_dir($path)) {
 
 // 构建导出shp命令并执行
 $lyrName = $request->lyrName;
-$command = "pgsql2shp -f " . $path . "/". $lyrName . ".shp ".
-    "-h 127.0.0.1 -u postgres -P 123456 -p 5432 webgis ".
+$command = "pgsql2shp -f " . $path . "/" . $lyrName . ".shp ".
+    " -h " . $dbOperator->getHost() . " -u " . $dbOperator->getUser().
+    " -P " . $dbOperator->getPassword() . " -p " . $dbOperator->getPort().
+    " " . $dbOperator->getDbName() . " ".
     "\"SELECT * from ". $lyrName . "\"";
 exec($command, $output, $code);
 

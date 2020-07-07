@@ -14,7 +14,7 @@ class DBOperator
     //
     // @param
     // @return
-    public function connect(){
+    public function connect() {
         // 构建连接字符串
         $connect_string = "host={$this->host} 
             port={$this->port} 
@@ -31,7 +31,7 @@ class DBOperator
     // @param sql: 查询语句，字符串
     //        params: 查询语句需要的参数
     // @return
-    public function queryWithParam($sql, $params){
+    public function queryWithParam($sql, $params) {
         return @pg_query_params($this->connection, $sql, $params);
     }
 
@@ -39,7 +39,7 @@ class DBOperator
     //
     // @param sql: 查询语句，字符串
     // @return
-    public function query($sql){
+    public function query($sql) {
         return @pg_query($this->connection, $sql);
     }
 
@@ -47,8 +47,47 @@ class DBOperator
     //
     // @param
     // @return 当前数据库连接
-    public function getConnection()
-    {
+    public function getConnection() {
         return $this->connection;
+    }
+
+    // 获得主机ip
+    //
+    // @param
+    // @return 主机ip
+    public function getHost() {
+        return $this->host;
+    }
+
+    // 获得数据库名称
+    //
+    // @param
+    // @return 数据库名
+    public function getDbName() {
+        return $this->dbname;
+    }
+
+    // 获得用户名
+    //
+    // @param
+    // @return 用户名
+    public function getUser() {
+        return $this->user;
+    }
+
+    // 获得密码
+    //
+    // @param
+    // @return 密码
+    public function getPassword() {
+        return $this->password;
+    }
+
+    // 获得端口号
+    //
+    // @param
+    // @return 端口号
+    public function  getPort() {
+        return $this->port;
     }
 }
