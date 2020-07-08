@@ -71,6 +71,12 @@ DesktopControl.prototype._init = function () {
             alert("图层英文名不可为空！");
             return;
         }
+        // 检查英文别名是否含有除英文和数字外的字符
+        let patternEn = new RegExp("[0-9A-Za-z]+");
+        if(!patternEn.test(lyrEnName)){
+            alert("图层英文别名含有非法字符");
+            return;
+        }
 
         if(me.modalControl.editableLyrs.indexOf(lyrName) > -1){
             alert("已经存在同名图层！");
