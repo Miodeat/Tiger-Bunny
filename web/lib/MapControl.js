@@ -128,7 +128,9 @@ MapControl.prototype._addOlMap = function () {
         view: new ol.View({
             center: ol.proj.transform([112.3, 28.9], "EPSG:4326", "EPSG:3857"),
             zoom: 4,
-            constrainResolution: true
+            constrainResolution: true,
+            maxZoom: 18,
+            minZoom: 1
         }),
 
     });
